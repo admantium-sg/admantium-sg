@@ -1,0 +1,15 @@
+name: Fetch Blog Posts
+on:
+  schedule:
+    - cron: '24 12 * * *'
+
+jobs:
+  update-blog-posts:
+    name: Update blog posts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          feed_list: "https://dev.to/feed/admantium"
+          max_post_count: 5
